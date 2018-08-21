@@ -8,37 +8,38 @@ this is experiment to know how classloader run
     
 then will return a bash ,you run below command
 
-    sh app.sh
+    sh container.sh
     
 then the output is 
 
     # ignore maven build log
-    =====app1=======
+    start up the app 1:
     AppClassLoader load applib1
     applib1:
     CommonClassLoader load Calculator
     3
-    =====app2=======
+    start up the app 2:
     AppClassLoader load applib2
     applib2:
-    CommonClassLoader load Calculator
     4
     
 i define two classloader `AppClassLoader` and its parent classloader`CommonClassLoader`, 
 
-the first classloader loads class in path you specify.
+the first classloader loads classes in path you specify.
 
-the second classloader is on the common path `/opt/cl/common`,so i put the `Calculator` class there
+the second classloader loads classes from common path `/opt/cl/common`,so i put the `Calculator` class there
 
-so i run the two app which are `app1` and `app2`
+so i execute `container` that run two app `app1` and `app2`
 
-you will see the output they load `calcultor` from `CommonClassLoader` 
+you will see the output they load `calcultor` from `CommonClassLoader` only one time
 
-and their `applib` class is loaded by their own `AppClassLoader`
+and use  `AppClassLoader` to load their own  `applib`
+
+for detail you can see the code.
 
 # conclusion
 
-this example is similar with tomcat or some web container. 
+this example is similar with tomcat or some other web container. 
 
 they use `AppClassLoader` to load the different application
 
