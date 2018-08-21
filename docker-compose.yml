@@ -1,0 +1,9 @@
+version: "3"
+services:
+
+  app:
+    image: sjj050121014/jdk8-mvn:1.0
+    volumes:
+      - .:/root
+    command:
+      - bash

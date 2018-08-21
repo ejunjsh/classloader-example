@@ -1,2 +1,5 @@
 .idea/
 *.class
+.m2/
+.bash_history
+target/
